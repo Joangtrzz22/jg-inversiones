@@ -14,28 +14,48 @@
     </header>
 
     <main class="catalogo">
+        
         <div class="tarjeta">
+            <img src="imagenes/civic.jpg" alt="Honda Civic 2017" class="foto-vehiculo">
             <h2>Honda Civic 2017</h2>
             <p class="precio">DOP $950,000</p>
             <p class="descripcion">Color Blanco | Transmisión Automática | Gasolina</p>
-            <a href="https://wa.me/18095551234?text=Hola%20JG%20Inversiones,%20deseo%20información%20y%20cotización%20del%20Honda%20Civic%202017" target="_blank" class="boton-contacto">
+            <a href="#" onclick="registrarConsulta('Honda Civic 2017', 'https://wa.me/18095551234?text=Hola%20JG%20Inversiones,%20deseo%20información%20del%20Honda%20Civic%202017')" class="boton-contacto">
                 Consultar por WhatsApp
             </a>
         </div>
 
         <div class="tarjeta">
+            <img src="imagenes/frontier.png" alt="Nissan Frontier 2026" class="foto-vehiculo">
             <h2>Nissan Frontier 2026</h2>
             <p class="precio">DOP $2,100,000</p>
             <p class="descripcion">4x4 Diesel | Color Gris | CarPlay Integrado</p>
-            <a href="https://wa.me/18095551234?text=Hola%20JG%20Inversiones,%20deseo%20información%20y%20cotización%20de%20la%20Nissan%20Frontier%202026" target="_blank" class="boton-contacto">
+            <a href="#" onclick="registrarConsulta('Nissan Frontier 2026', 'https://wa.me/18095551234?text=Hola%20JG%20Inversiones,%20deseo%20información%20de%20la%20Nissan%20Frontier%202026')" class="boton-contacto">
                 Consultar por WhatsApp
             </a>
         </div>
+
     </main>
 
     <footer>
         <p>&copy; 2026 JG Inversiones - Santiago, República Dominicana</p>
     </footer>
+
+    <script>
+    function registrarConsulta(nombreVehiculo, enlaceWhatsapp) {
+        // REEMPLAZA las letras de abajo por tu URL larga que te dio Google Apps Script
+        var urlBackend = "https://script.google.com/macros/s/AKfycbwhGkY8LApkJ2eZ6URcoU8S4a8_RtM1i852e7o5H8IBeMTsJ0p45k90bSY3TiES0GsR5Q/exec";
+        
+        // Envía los datos al Excel de forma transparente en segundo plano
+        fetch(urlBackend + "?vehiculo=" + encodeURIComponent(nombreVehiculo) + "&link=" + encodeURIComponent(enlaceWhatsapp), {
+            method: 'POST',
+            mode: 'no-cors'
+        });
+
+        // Inmediatamente abre el WhatsApp para atender al cliente
+        window.open(enlaceWhatsapp, '_blank');
+    }
+    </script>
 
 </body>
 </html>
